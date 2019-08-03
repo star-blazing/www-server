@@ -31,7 +31,7 @@
     document.getElementById('LoginWithAmazon').onclick = function() {
     options = { scope : 'profile' };
     amazon.Login.authorize(options,
-        'https://star-blazing-fe.herokuapp.com/');
+        'https://star-blazing-auth.herokuapp.com/amzOAuth');
     return false;
     };
 </script>

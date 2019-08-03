@@ -26,7 +26,6 @@
       response_type: 'code'
     };
 
-
     let QueryString = Object.keys(options).map((key, i) => {
       return `${key}=` + encodeURIComponent(options[key]);
     }).join("&");
@@ -44,7 +43,11 @@
   </a>
   <script type="text/javascript">
     document.getElementById('LoginWithAmazon').onclick = function () {
-      options = { scope: 'profile' };
+      options = { 
+        scope: 'profile',
+        client_id:'amzn1.application-oa2-client.a72e393376734e2e9c43d9896167e43d',
+        redirect_uri:'https://star-blazing-auth.herokuapp.com/amzOAuth'
+ };
       amazon.Login.authorize(options,
         'https://star-blazing-fe.herokuapp.com/');
       return false;

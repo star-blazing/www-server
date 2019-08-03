@@ -25,11 +25,6 @@
       prompt: 'consent',
       response_type: 'code'
     };
-    <a href id="LoginWithAmazon">
-      <img border="0" alt="Login with Amazon"
-        src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png"
-        width="156" height="32" />
-    </a>
 
 
     let QueryString = Object.keys(options).map((key, i) => {
@@ -41,7 +36,12 @@
     $('#oauth').append(`<a href="${authURL}">Login With Google</a>`);
 
   </script>
-
+    
+    <a href id="LoginWithAmazon">
+        <img border="0" alt="Login with Amazon"
+          src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png"
+          width="156" height="32" />
+      </a>
 
 </body>
 

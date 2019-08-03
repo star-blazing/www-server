@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Auth Test</title>
-    </head>
-    <body>
-        <main>
 
-            <div id="oauth"></div>
+<head>
+  <title>Auth Test</title>
+</head>
 
-        </main>
+<body>
+  <div id="amazon-root"></div>
+  <script type="text/javascript">
 
-        <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+    window.onAmazonLoginReady = function () {
+      amazon.Login.setClientId('amzn1.application-oa2-client.a72e393376734e2e9c43d9896167e43d');
+    };
+    (function (d) {
+      var a = d.createElement('script'); a.type = 'text/javascript';
+      a.async = true; a.id = 'amazon-login-sdk';
+      a.src = 'https://assets.loginwithamazon.com/sdk/na/login1.js';
+      d.getElementById('amazon-root').appendChild(a);
+    })(document);
+  </script>
 
-        <script>
+  <main>
 
-          let googleURL = "https://accounts.google.com/o/oauth2/v2/auth";
+    <div id="oauth"></div>
 
-          let options = {
-            client_id:'YOUR-GOOGLE-CLIENT-ID',
-            redirect_uri: 'YOUR-SERVER-URL/oauth',
-            scope: 'email openid profile',
-            prompt: 'consent',
-            response_type: 'code'
-          };
+  </main>
 
-          let QueryString = Object.keys(options).map( (key,i) => {
-            return `${key}=` + encodeURIComponent(options[key]);
-          }).join("&");
+  <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
 
-          let authURL = `${googleURL}?${QueryString}`;
+  <a href id="LoginWithAmazon">
+    <img alt="Login with Amazon" src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_202x92.png" />
+    <!--pressed button url  https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_202x92_pressed.png -->
+  </a>
+  <script type="text/javascript">
+    document.getElementById('LoginWithAmazon').onclick = function () {
+      options = { scope: 'profile' };
+      amazon.Login.authorize(options,
+        'https://star-blazing-auth.herokuapp.com/amzOAuth');
+      return false;
+    };
+  </script>
 
-          $('#oauth').append(`<a href="${authURL}">Login With Google</a>`);
-
-        </script>
+</body>
 
 
-    </body>
 </html>

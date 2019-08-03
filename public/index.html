@@ -34,7 +34,6 @@
 
     let authURL = `${googleURL}?${QueryString}`;
 
-    $('#LoginWithAmazon').append(`<a href="${authURL}">Login With Google</a>`);
 
   </script>
 
@@ -54,6 +53,7 @@
         'https://star-blazing-fe.herokuapp.com/');
       return false;
     };
+    $('#LoginWithAmazon').append(`<a href="${authURL}">Login With Google</a>`);
   </script>
 
 </body>
